@@ -12,3 +12,15 @@ This is a test of Org Mode
 ********** Very neat
 
 I really should look up more stuff I can do with this!
+
+* 2020-05-31
+** Turtle
+The turtle moves!  In actuality, it's a pale imitation of what it
+should be, but it's a START! Next up we'll want to do something
+logo-like and make it draw based on a programming language.
+** Lisp
+Well, I haven't written any Lisp today, but I will.
+** House
+We cleaned up the kitchen, and took a lot of stuff out of the Library.
+More removal to occur; then some remodelling.  Then we set up desks
+and that becomes our office so next steps can happen.
