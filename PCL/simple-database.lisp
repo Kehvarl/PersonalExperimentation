@@ -13,7 +13,7 @@
 
 (defun prompt-read (prompt)
   (format *query-io* "~a: " prompt)
-  (force-output *query-io*)
+  ;(force-output *query-io*)
   (read-line *query-io*))
 
 (defun prompt-for-cd ()
@@ -21,4 +21,10 @@
    (prompt-read "Title")
    (prompt-read "Artist")
    (or (parse-integer (prompt-read "Rating") :junk-allowed t) 0)
-   (y-or-n-p "Ripped [y/n]")))
+   (y-or-n-p "Ripped")))
+
+(defun add-cds ()
+  (loop (add-record (prompt-for-cd))
+	(if (not (y-or-n-p "Another: ")) (return))))
+
+
