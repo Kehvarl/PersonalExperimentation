@@ -42,7 +42,9 @@
 (defun select (selector-fn)
   (remove-if-not selector-fn *db*))
 
+(defun artist-selector (artist)
+  #'(lambda (cd) (equal (getf cd :artist) artist)))
+
 (defun select-by-artist (artist)
-  (remove-if-not
-   #'(lambda (cd) (equal (getf cd :artist) artist))
-   *db*))
+  (select
+   (artist-selector artist)))
