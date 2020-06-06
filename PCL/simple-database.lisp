@@ -56,4 +56,4 @@
 
 (defun select-by-artist (artist)
   (select
-   (artist-selector artist)))
+   (where :artist artist)))
