@@ -70,4 +70,4 @@
   (setf *db* (remove-if selector-fn *db*)))
 
 (defun make-comparison-expr (field value)
-  (list 'equal (list 'getf 'cd field) value))
+  `(equal (getf cd ,field) ,value))
