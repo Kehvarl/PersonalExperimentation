@@ -1,6 +1,6 @@
 (in-package :cl-user)
 
-(defpackage :com.kehvarl.parhnames
+(defpackage :com.kehvarl.pathnames
   (:use :common-lisp)
   (:export
    :list-directory
