@@ -60,3 +60,21 @@
    :defaults wildcard))
 
 			    
+(defun file-exists-p (pathname)
+  #+(or sbcl lispworks openmcl)
+  (probe-file pathname)
+
+  #+(or allegro cmu)
+  (or (probe-file (pathname-as-directory pathname))
+      (probe-file pathname))
+
+  #+clisp
+  (or (ignore-errors
+       (probe-file (pathname-as-file pathname)))
+      (ignore-errors
+       (let ((directory-form (pathname-as-directory pathname)))
+	 (when (ext:probe-directory directory-form)
+	   directory-form))))
+
+  #-(or sbcl cmu lispworks openmcl allegro clisp)
+  (error "file-exists-p not implemented"))
