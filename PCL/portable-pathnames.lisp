@@ -78,3 +78,18 @@
 
   #-(or sbcl cmu lispworks openmcl allegro clisp)
   (error "file-exists-p not implemented"))
+
+
+(defun pathname-as-file (name)
+  (let ((pathname (pathname name)))
+    (when (wild-pathname-p pathname)
+      (error "Can't reliably convert wild pathnames."))
+    (if (directory-pathname-p name)
+	(let* ((directory (pathname-directory pathname))
+	       (name-and-type (pathname (first (last directory)))))
+	  (make-pathname
+	   :directory (butlast directory)
+	   :name (pathname-name name-and-type)
+	   :type (pathname-type name-and-type)
+	   :defaults pathname))
+	pathname)))
