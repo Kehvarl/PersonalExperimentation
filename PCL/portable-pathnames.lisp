@@ -93,3 +93,15 @@
 	   :type (pathname-type name-and-type)
 	   :defaults pathname))
 	pathname)))
+
+(defun walk-directory (dirname fn &key directories (test (constantly t)))
+  (labels
+      ((walk (name)
+	 (cond
+	   ((directory-pathname-p name)
+	    (when (and directories (funcall test name))
+	      (funcall fn name))
+	    (dolist (x (list-directory name)) (walk x)))
+	   ((funcall test name) (funcall fn name)))))
+    (walk (pathname-as-directory dirname))))
+	   
