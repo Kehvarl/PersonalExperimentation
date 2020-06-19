@@ -12,3 +12,6 @@
    :walk-directory
    :directory-p
    :file-p))
+
+(defpackage :com.kehvarl.spam
+  (:use :common-lisp :com.kehvarl.pathnames))
